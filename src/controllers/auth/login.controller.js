@@ -4,24 +4,33 @@ import { generateToken } from "../../utils/generateToken.js";
 
 export const loginController = async (req, res) => {
   try {
-    const { email, password} = req.body;
-    if (!email || !password) return res.status(403).json({ message: "please enter your email and password both" });
-    const verifyUser = await User.findOne({ email });
+    const { username, password} = req.body;
+    if (!username || !password) return res.status(403).json({ message: "please enter your username and password both" });
+    const verifyUser = await User.findOne({ username });
+    const {id, username:loginuserName, role} = verifyUser;
     if (!verifyUser) {
-      return res.status(404).json({ message: "User not Found" });
+      return res.status(401).json({
+         success:false,
+         message: "Invalid username or password" 
+        });
     }
     const bcryptPassword = await bcrypt.compare(password, verifyUser.password);
       if (bcryptPassword) {
         const token = generateToken(verifyUser);
         return res.status(200).json({
           success: true,
-          message: "login Sccessfully",
-          token
+          message: "login successfully",
+          token,
+          user:{
+          id,
+          username,
+          role,
+          }
         });
       } else {
        return res.status(401).json({
           success: false,
-          message: "password was incorrect please try again",
+          message: "Invalid email or password",
         });
       }
   } catch (err) {

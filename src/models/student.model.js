@@ -32,11 +32,17 @@ const studentSchema = new mongoose.Schema(
       trim: true
 
     },
+    user:{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"user",
+      required:true
+
+    }
   },
   {
     timestamps: true,
   },
 );
 
-const Student = mongoose.model("student", studentSchema);
+const Student = mongoose.model("Student", studentSchema);
 export default Student;

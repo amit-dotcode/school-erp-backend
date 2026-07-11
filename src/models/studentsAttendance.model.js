@@ -36,5 +36,5 @@ const studentsAttendanceSchema= new mongoose.Schema(
 );
 
 
-const StudentsAttendance = mongoose.model('studentAttendance', studentsAttendanceSchema);
+const StudentsAttendance = mongoose.model('StudentAttendance', studentsAttendanceSchema);
 export default StudentsAttendance;

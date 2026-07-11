@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from "cors";
 import connectDB from './config/db.config.js';
 import authRoutes from './routes/auth.routes.js';
 import profileRoutes from './routes/profile.routes.js';
@@ -10,6 +11,9 @@ import teacherRoute from './routes/teacher.routes.js'
 
 //express server
 const app = express();
+
+//cors
+app.use(cors());
 
 //for get api data response into req.body
 app.use(express.json());
