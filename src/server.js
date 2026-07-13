@@ -7,6 +7,7 @@ import roleRouter from './routes/dashboard.routes.js';
 import studentRouter from './routes/student.routes.js';
 import studentsAttendanceRoute from './routes/studentsAttendance.routes.js'
 import teacherRoute from './routes/teacher.routes.js'
+import adminRoutes from './routes/admin.routes.js';
 
 
 //express server
@@ -26,6 +27,7 @@ await connectDB();
 
 //router
 app.use("/api/auth", authRoutes);
+app.use("/api", adminRoutes);
 app.use("/api", profileRoutes);
 app.use("/api", roleRouter);
 app.use("/api/Students", studentRouter);

@@ -7,12 +7,18 @@ export const loginController = async (req, res) => {
     const { username, password} = req.body;
     if (!username || !password) return res.status(403).json({ message: "please enter your username and password both" });
     const verifyUser = await User.findOne({ username });
-    const {id, username:loginuserName, role} = verifyUser;
     if (!verifyUser) {
-      return res.status(401).json({
-         success:false,
-         message: "Invalid username or password" 
-        });
+      return res.status(400).json({
+        success:false,
+        message: "Invalid request" 
+      });
+    }
+    const {id, username:loginuserName, role, isActive} = verifyUser;
+    if(!isActive){
+      return res.status(403).json({
+        success:false,
+        message: "Permission Denied"
+      })
     }
     const bcryptPassword = await bcrypt.compare(password, verifyUser.password);
       if (bcryptPassword) {
@@ -30,7 +36,7 @@ export const loginController = async (req, res) => {
       } else {
        return res.status(401).json({
           success: false,
-          message: "Invalid email or password",
+          message: "Invalid username or password",
         });
       }
   } catch (err) {

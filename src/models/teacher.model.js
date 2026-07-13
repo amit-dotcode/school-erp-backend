@@ -6,13 +6,11 @@ const teacherSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
-
     },
     lastName: {
       type: String,
       required: true,
       trim: true,
-
     },
     joiningDate: {
       type: Date,
@@ -25,8 +23,7 @@ const teacherSchema = new mongoose.Schema(
     status: {
       type: String,
       enum: ["active", "inactive"],
-      default: "active"
-
+      default: "active",
     },
     teacherId: {
       type: String,
@@ -55,6 +52,11 @@ const teacherSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    // user: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: "user",
+    //   required: true,
+    // },
   },
   { timestamps: true },
 );
