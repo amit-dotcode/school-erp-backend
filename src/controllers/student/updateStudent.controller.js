@@ -22,6 +22,7 @@ export const updateStudentController = async (req, res) => {
       });
       return res.status(200).json({
         success: true,
+        message: "Student Updated successfully",
         data: updateStudent,
       });
     }

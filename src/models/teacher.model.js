@@ -20,11 +20,6 @@ const teacherSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    status: {
-      type: String,
-      enum: ["active", "inactive"],
-      default: "active",
-    },
     teacherId: {
       type: String,
       unique: true,
@@ -52,11 +47,12 @@ const teacherSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    // user: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: "user",
-    //   required: true,
-    // },
+    user:{
+          type:mongoose.Schema.Types.ObjectId,
+          ref:"user",
+          required:true
+    
+    }
   },
   { timestamps: true },
 );

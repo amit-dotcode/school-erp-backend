@@ -8,7 +8,7 @@ import {updateTeacherController} from '../controllers/teacher/updateTeacher.cont
 
 const teacherRoute = Router();
 
-teacherRoute.post('', authMiddleware, roleMiddleware('admin'), createTeacherController);
+teacherRoute.post('/create-teacher', authMiddleware, roleMiddleware('admin'), createTeacherController);
 teacherRoute.get('', authMiddleware, roleMiddleware('admin'), teacherController);
 teacherRoute.get('/:teacherId', authMiddleware, roleMiddleware('admin'), getTeacherController);
 teacherRoute.patch('/:teacherId', authMiddleware, roleMiddleware('admin'), updateTeacherController);

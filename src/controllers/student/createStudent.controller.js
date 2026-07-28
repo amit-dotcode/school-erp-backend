@@ -26,7 +26,7 @@ export const createstudentController = async (req, res) => {
     ) {
       return res.status(400).json({
         success: false,
-        message: "please fill all required fileds",
+        message: "please fill all required fields",
       });
     }
 
@@ -56,10 +56,11 @@ export const createstudentController = async (req, res) => {
       section,
       rollNumber,
     });
+    console.log(verifyStudent, "Verify");
     if (verifyStudent) {
       return res.status(409).json({
         success: false,
-        message: "student already exist please try different student",
+        message: "A student with this Roll Number already exists in this class and section."
       });
     } else {
       const addmissionNum = generateAddmissionNumber(lastStudent);

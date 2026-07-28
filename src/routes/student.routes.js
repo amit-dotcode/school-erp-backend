@@ -10,10 +10,10 @@ import {deleteStudentController} from '../controllers/student/deleteStudent.cont
 
 const studentRouter = Router();
 
-studentRouter.post('/create-Student', authMiddleware, roleMiddleware('admin'), createstudentController);
+studentRouter.post('/create-student', authMiddleware, roleMiddleware('admin'), createstudentController);
 studentRouter.get('/student-list', authMiddleware, roleMiddleware('admin', 'teacher'), studentsController);
-studentRouter.get('/:id', authMiddleware, roleMiddleware('admin', 'teacher'), getStudentController);
-studentRouter.patch('/update/:id', authMiddleware, roleMiddleware('admin'), updateStudentController);
-studentRouter.delete('/:id', authMiddleware, roleMiddleware('admin'), deleteStudentController);
+// studentRouter.get('/:id', authMiddleware, roleMiddleware('admin', 'teacher'), getStudentController); // will used based on business reuirement letter
+studentRouter.patch('/:id', authMiddleware, roleMiddleware('admin'), updateStudentController);
+// studentRouter.delete('/:id', authMiddleware, roleMiddleware('admin'), deleteStudentController);
 
 export default studentRouter;

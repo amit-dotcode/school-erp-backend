@@ -1,6 +1,8 @@
 import Admin from "../../models/admin.modal.js";
 import bcrypt from "bcrypt";
 import User from "../../models/user.model.js";
+
+
 export const createAdminController = async (req, res)=>{
     try{
     const {firstName, lastName, contact, email, address, username, password, confirmPassword} = req.body

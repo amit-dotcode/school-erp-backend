@@ -30,7 +30,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api", adminRoutes);
 app.use("/api", profileRoutes);
 app.use("/api", roleRouter);
-app.use("/api/Students", studentRouter);
+app.use("/api/students", studentRouter);
 app.use ("/api/student-attendance", studentsAttendanceRoute);
 app.use ("/api/teacher", teacherRoute);
 
