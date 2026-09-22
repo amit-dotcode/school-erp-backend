@@ -1,8 +1,17 @@
 import Teacher from "../../models/teacher.model.js";
 import bcrypt from "bcrypt";
 import User from "../../models/user.model.js";
+import { createTeacherSchema } from "../../validations/teachers.validation.js";
 export const createTeacherController = async (req, res) => {
   try {
+    const validationResult = createTeacherSchema.safeParse(req.body);
+    if (!validationResult.success) {
+      const errorMessage = validationResult.error.issues[0]?.message || "Invalid request";
+      return res.status(400).json({
+        success: false,
+        message: errorMessage,
+      });
+    }
     const {
       firstName,
       lastName,
@@ -14,30 +23,8 @@ export const createTeacherController = async (req, res) => {
       email,
       password,
       confirmPassword,
-    } = req.body;
-    if (
-      !firstName ||
-      !lastName ||
-      !joiningDate ||
-      !subject ||
-      !address ||
-      !contactNumber ||
-      !emergencyContact ||
-      !email ||
-      !password ||
-      !confirmPassword
-    ) {
-      return res.status(400).json({
-        success: false,
-        message: "please fill all required fields",
-      });
-    }
-    if (password !== confirmPassword) {
-      return res.status(401).json({
-        success: false,
-        message: "password not match",
-      });
-    }
+    } = validationResult.data;
+
     const lastTeacher = await Teacher.findOne().sort({ createdAt: -1 });
 
     const generateTeacherIdNumber = (lastTeacher) => {
