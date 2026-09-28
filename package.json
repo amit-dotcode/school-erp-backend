@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --env-file=.env --watch src/server.js"
+    "dev": "node --env-file=.env --watch src/server.js",
+    "build": "node --check src/server.js",
+    "lint": "oxlint"
+
   },
   "keywords": [],
   "author": "",
@@ -20,6 +23,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "nodemon": "^3.1.14"
+    "nodemon": "^3.1.14",
+    "oxlint": "^1.86.0"
   }
 }

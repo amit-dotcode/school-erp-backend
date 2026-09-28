@@ -85,6 +85,7 @@ export const createstudentController = async (req, res) => {
       return res.status(200).json({
         success: true,
         message: "Student addedd successfully",
+        response:createStudent
       });
     }
   } catch (err) {

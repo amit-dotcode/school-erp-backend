@@ -29,7 +29,7 @@ export const loginController = async (req, res) => {
           token,
           user:{
           id,
-          username,
+          loginuserName,
           role,
           }
         });

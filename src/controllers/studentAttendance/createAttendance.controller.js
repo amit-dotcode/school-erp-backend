@@ -37,7 +37,8 @@ export const createAttendanceController = async (req, res)=>{
         })
         return res.status(201).json({
             success:true,
-            message: "attendance marked"
+            message: "attendance marked",
+            response: markeAttendance
         })
     }else{
        return res.status(400).json({

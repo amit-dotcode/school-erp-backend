@@ -3,9 +3,9 @@ import { authMiddleware } from "../middlewares/auth.middleware.js";
 import {roleMiddleware} from '../middlewares/role.middleware.js'
 import {createstudentController } from "../controllers/student/createStudent.controller.js";
 import {studentsController} from '../controllers/student/students.controller.js';
-import {getStudentController} from '../controllers/student/getStudent.Controller.js'
+//import {getStudentController} from '../controllers/student/getStudent.Controller.js'
 import {updateStudentController} from '../controllers/student/updateStudent.controller.js'
-import {deleteStudentController} from '../controllers/student/deleteStudent.controller.js'
+//import {deleteStudentController} from '../controllers/student/deleteStudent.controller.js'
 
 
 const studentRouter = Router();

@@ -2,6 +2,8 @@ import Teacher from "../../models/teacher.model.js";
 import bcrypt from "bcrypt";
 import User from "../../models/user.model.js";
 import { createTeacherSchema } from "../../validations/teachers.validation.js";
+
+
 export const createTeacherController = async (req, res) => {
   try {
     const validationResult = createTeacherSchema.safeParse(req.body);
@@ -22,7 +24,7 @@ export const createTeacherController = async (req, res) => {
       emergencyContact,
       email,
       password,
-      confirmPassword,
+      //confirmPassword,
     } = validationResult.data;
 
     const lastTeacher = await Teacher.findOne().sort({ createdAt: -1 });
@@ -76,6 +78,7 @@ export const createTeacherController = async (req, res) => {
       return res.status(201).json({
         success: true,
         message: "teacher created successfully",
+        response: createStudent
       });
     }
   } catch (err) {
