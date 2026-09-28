@@ -4,11 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest run",
     "dev": "node --env-file=.env --watch src/server.js",
     "build": "node --check src/server.js",
     "lint": "oxlint"
-
   },
   "keywords": [],
   "author": "",
@@ -24,6 +23,7 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.14",
-    "oxlint": "^1.86.0"
+    "oxlint": "^1.86.0",
+    "vitest": "^5.0.2"
   }
 }
